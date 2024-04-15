@@ -10,7 +10,6 @@ import { CommonModule } from '@angular/common';
   imports: [
     TodoComponent,
     CommonModule
-
   ],
   templateUrl: './todo-list.component.html',
   styleUrl: './todo-list.component.css'
