@@ -3,13 +3,15 @@ import { TodoService } from '../todo.service';
 import { Todo } from '../todo';
 import { TodoComponent } from '../todo/todo.component';
 import { CommonModule } from '@angular/common';
+import { NewTodoComponent } from '../new-todo/new-todo.component';
 
 @Component({
   selector: 'app-todo-list',
   standalone: true,
   imports: [
     TodoComponent,
-    CommonModule
+    CommonModule,
+    NewTodoComponent
   ],
   templateUrl: './todo-list.component.html',
   styleUrl: './todo-list.component.css'

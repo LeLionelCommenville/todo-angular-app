@@ -1,0 +1,7 @@
+<form [formGroup]="todoForm" (submit)="submitTodo()">
+  <label for="title">Title : </label>
+  <input id="title" type="text" formControlName="todoTitle">
+  <label for="content">Content : </label>
+  <input id="content" type="text" formControlName="todoContent">
+  <button type="submit">Submit</button>
+</form>

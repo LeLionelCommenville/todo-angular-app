@@ -7,21 +7,21 @@ import { Todo } from './todo';
 export class TodoService {
   protected todoList: Todo[] = [
     {
-      id: 0,
+      id: 1,
       title: 'Create a Todo Service',
       content: "We need a Todo Service for managing the todo list with some functions",
       completion: 50,
       done: false
     },
     {
-      id: 1,
+      id: 2,
       title: 'Create a Todo list component',
       content: "We need a Todo list component how will show the list of todo",
       completion: 0,
       done: false
     },
     {
-      id: 2,
+      id: 3,
       title: 'Create a Todo  component',
       content: "We need a Todo component showing a todo in the user interface",
       completion: 0,
@@ -39,6 +39,17 @@ export class TodoService {
 
   deleteTodo(todo: Todo): Todo[] {
     return this.todoList = this.todoList.filter((t) => t !== todo);
+  }
+
+  addTodo(title: string, content: string) {
+    let newTodo : Todo = {
+      id: TodoService.length - 1,
+      title: title,
+      content : content,
+      completion: 0,
+      done: false
+    }
+    this.todoList.push(newTodo)
   }
 
   constructor() { }
