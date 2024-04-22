@@ -1,7 +1,21 @@
 <form [formGroup]="todoForm" (submit)="submitTodo()">
-  <label for="title">Title : </label>
-  <input id="title" type="text" formControlName="todoTitle">
-  <label for="content">Content : </label>
-  <input id="content" type="text" formControlName="todoContent">
+  <div>
+    <label for="title">Title : </label>
+    <input id="title" type="text" formControlName="todoTitle">
+  </div>
+  <div>
+    <label
+    for="content"
+    class="block mb-2 text-sm font-medium">
+      Content :
+    </label>
+    <textarea
+    id="content"
+    name="content"
+    rows="5"
+    formControlName="todoContent"
+    class="block bg-sky-600 w-full border-2 rounded border-cyan-500">
+    </textarea>
+  </div>
   <button type="submit">Submit</button>
 </form>
