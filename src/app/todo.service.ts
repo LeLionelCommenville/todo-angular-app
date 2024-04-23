@@ -52,6 +52,17 @@ export class TodoService {
     this.todoList.push(newTodo)
   }
 
+  editTodo(id: number, title: string, content: string, completion: number, done: boolean) {
+    let editedTodo: Todo =  {
+      id: id,
+      title: title,
+      content: content,
+      completion: completion,
+      done: done
+    }
+    this.todoList[id] = editedTodo;
+  }
+
   constructor() { }
 
 }
