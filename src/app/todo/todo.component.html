@@ -2,4 +2,5 @@
   <div class="flex justify-between"><h2>{{ todo.title }}</h2><progress max="100" value="{{ todo.completion }}">{{ todo.completion }}</progress></div>
   <p>{{ todo.content }}</p>
   <p>{{ todo.done }}</p>
+  <app-edit-todo [todo]="todo"></app-edit-todo>
 </section>
