@@ -60,7 +60,7 @@ export class TodoService {
       completion: completion,
       done: done
     }
-    this.todoList[id] = editedTodo;
+    this.todoList[id-1] = editedTodo;
   }
 
   constructor() { }

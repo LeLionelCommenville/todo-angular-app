@@ -17,11 +17,14 @@ import { CommonModule } from '@angular/common';
 export class EditTodoComponent {
   @Input() todo!: Todo;
   todoService : TodoService = inject(TodoService);
+  editTodoForm! : FormGroup;
 
-  editTodoForm = new FormGroup({
-    todoTitle: new FormControl(),
-    todoContent: new FormControl() ,
-  })
+  ngOnInit() {
+    this.editTodoForm = new FormGroup({
+      todoTitle: new FormControl(this.todo.title),
+      todoContent: new FormControl(this.todo.content)
+    })
+  }
 
   editTodo(){
     this.todoService.editTodo(
