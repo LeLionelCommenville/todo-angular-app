@@ -60,7 +60,8 @@ export class TodoService {
       completion: completion,
       done: done
     }
-    this.todoList[id-1] = editedTodo;
+    const index = this.todoList.findIndex((todo) => todo.id === id);
+    this.todoList[index] = editedTodo;
   }
 
   constructor() { }
