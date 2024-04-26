@@ -1,7 +1,7 @@
 <form [formGroup]="todoForm" (submit)="submitTodo()">
   <div>
     <label for="title">Title : </label>
-    <input id="title" type="text" formControlName="todoTitle">
+    <input id="title" type="text" class="bg-sky-600 w-full border-2 rounded border-cyan-500" formControlName="todoTitle">
   </div>
   <div>
     <label
@@ -17,5 +17,5 @@
     class="block bg-sky-600 w-full border-2 rounded border-cyan-500">
     </textarea>
   </div>
-  <button type="submit">Submit</button>
+  <button type="submit" class="bg-sky-600 border-2 rounded border-cyan-500 my-4 py-2 px-4 rounded-full hover:bg-sky-800">Submit</button>
 </form>
