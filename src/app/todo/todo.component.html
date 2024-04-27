@@ -2,5 +2,10 @@
   <div class="flex justify-between"><h2>{{ todo.title }}</h2><progress max="100" value="{{ todo.completion }}">{{ todo.completion }}</progress></div>
   <p>{{ todo.content }}</p>
   <p>{{ todo.done }}</p>
-  <app-edit-todo [todo]="todo"></app-edit-todo>
+  <button class="bg-sky-600 border-2 rounded border-cyan-500 my-4 py-2 px-4 rounded-full hover:bg-sky-800" (click)="toggleModal()">Open Edit</button>
+  <div *ngIf="showEditModal" class="overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center flex">
+    <app-edit-todo [todo]="todo"></app-edit-todo>
+    <button class="bg-sky-600 border-2 rounded border-cyan-500 my-4 py-2 px-4 rounded-full hover:bg-sky-800" (click)="toggleModal()">Close Edit</button>
+  </div>
+  <div *ngIf="showEditModal" class="opacity-20 fixed inset-0 z-40 bg-black"></div>
 </section>
