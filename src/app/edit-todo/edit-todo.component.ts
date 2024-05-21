@@ -23,7 +23,8 @@ export class EditTodoComponent {
     this.editTodoForm = new FormGroup({
       todoTitle: new FormControl(this.todo.title),
       todoContent: new FormControl(this.todo.content),
-      todoCompletion: new FormControl(this.todo.completion)
+      todoCompletion: new FormControl(this.todo.completion),
+      todoDone: new FormControl(this.todo.done)
     })
   }
 
@@ -33,7 +34,7 @@ export class EditTodoComponent {
       this.editTodoForm.value.todoTitle ?? '',
       this.editTodoForm.value.todoContent ?? '',
       this.editTodoForm.value.todoCompletion ?? 0,
-      true
+      this.editTodoForm.value.todoDone ?? false,
     )
   }
 }
