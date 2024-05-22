@@ -37,8 +37,8 @@ export class TodoService {
     return this.todoList[id];
   }
 
-  deleteTodo(todo: Todo): Todo[] {
-    return this.todoList = this.todoList.filter((t) => t !== todo);
+  deleteTodo(todo: Todo) {
+    this.todoList = this.todoList.filter((t) => t !== todo);
   }
 
   addTodo(title: string, content: string) {

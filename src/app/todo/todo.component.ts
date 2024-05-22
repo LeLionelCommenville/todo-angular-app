@@ -1,7 +1,9 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
 import { Todo } from '../todo';
 import { EditTodoComponent } from '../edit-todo/edit-todo.component';
 import { CommonModule } from '@angular/common';
+import { TodoService } from '../todo.service';
+
 
 @Component({
   selector: 'app-todo',
@@ -12,9 +14,14 @@ import { CommonModule } from '@angular/common';
 })
 export class TodoComponent {
   @Input() todo!: Todo;
+  todoService : TodoService = inject(TodoService);
   showEditModal = false;
 
-  toggleModal(){
+  toggleModal() {
     this.showEditModal = !this.showEditModal;
+  }
+
+  deleteTodo() {
+    this.todoService.deleteTodo(this.todo); 
   }
 }
