@@ -21,7 +21,11 @@ export class TodoListComponent {
   todoService : TodoService = inject(TodoService);
   todoList : Todo[] = [];
 
-  constructor() {
+
+  ngOnInit() {
     this.todoList = this.todoService.getAllTodos();
+    this.todoService.todoListUpdated.subscribe( (updatedTodos: Todo[]) =>  {
+      this.todoList = updatedTodos; 
+    });
   }
 }

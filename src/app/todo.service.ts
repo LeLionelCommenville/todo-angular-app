@@ -1,10 +1,11 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { Todo } from './todo';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TodoService {
+  todoListUpdated = new EventEmitter<Todo[]>();
   protected todoList: Todo[] = [
     {
       id: 1,
@@ -39,6 +40,7 @@ export class TodoService {
 
   deleteTodo(todo: Todo) {
     this.todoList = this.todoList.filter((t) => t !== todo);
+    this.todoListUpdated.emit(this.todoList);
   }
 
   addTodo(title: string, content: string) {
