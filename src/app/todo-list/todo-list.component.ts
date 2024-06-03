@@ -23,7 +23,9 @@ export class TodoListComponent {
 
 
   ngOnInit() {
-    this.todoList = this.todoService.getAllTodos();
+    this.todoService.getAllTodos().then((todoList:Todo[]) => {
+      this.todoList = todoList;
+    });
     this.todoService.todoListUpdated.subscribe( (updatedTodos: Todo[]) =>  {
       this.todoList = updatedTodos; 
     });

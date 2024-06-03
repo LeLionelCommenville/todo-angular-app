@@ -29,13 +29,16 @@ export class TodoService {
       done: false
     },
   ]
+  url = 'http://localhost:3000/todos';
 
-  getAllTodos(): Todo[] {
-    return this.todoList
+  async getAllTodos(): Promise<Todo[]> {
+    const data = await fetch(this.url);
+    return await data.json() ?? [];
   }
 
-  getTodoById(id: number): Todo {
-    return this.todoList[id];
+  async getTodoById(id: number): Promise<Todo | undefined> {
+    const data = await fetch(`${this.url}/${id}`);
+    return await data.json() ?? {};
   }
 
   deleteTodo(todo: Todo) {
