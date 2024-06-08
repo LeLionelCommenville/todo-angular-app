@@ -1,10 +1,17 @@
 import { EventEmitter, Injectable } from '@angular/core';
 import { Todo } from './todo';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
+
+
 export class TodoService {
+  constructor(
+    private http: HttpClient,
+  ) {};
+
   todoListUpdated = new EventEmitter<Todo[]>();
   protected todoList: Todo[] = [
     {
@@ -68,7 +75,5 @@ export class TodoService {
     const index = this.todoList.findIndex((todo) => todo.id === id);
     this.todoList[index] = editedTodo;
   }
-
-  constructor() { }
 
 }
