@@ -4,6 +4,7 @@ import { Todo } from '../todo';
 import { TodoComponent } from '../todo/todo.component';
 import { CommonModule } from '@angular/common';
 import { NewTodoComponent } from '../new-todo/new-todo.component';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-todo-list',
@@ -18,15 +19,16 @@ import { NewTodoComponent } from '../new-todo/new-todo.component';
 })
 export class TodoListComponent {
   title: string = 'Todo List';
-  todoService : TodoService = inject(TodoService);
-  todoList : Todo[] = [];
+  todoService: TodoService = inject(TodoService);
+  todoList: Todo[] = [];
 
 
   ngOnInit() {
-    this.todoService.getAllTodos().then((todoList:Todo[]) => {
-      this.todoList = todoList;
+    
+    this.todoService.httpGetAllTodos().subscribe((todos) => {
+      this.todoList = todos;
     });
-    this.todoService.todoListUpdated.subscribe( (updatedTodos: Todo[]) =>  {
+    this.todoService.todoListUpdated.subscribe((updatedTodos: Todo[]) =>  {
       this.todoList = updatedTodos; 
     });
   }

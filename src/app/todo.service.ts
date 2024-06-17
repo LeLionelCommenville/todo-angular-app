@@ -1,6 +1,7 @@
 import { EventEmitter, Injectable } from '@angular/core';
 import { Todo } from './todo';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -8,9 +9,11 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 
 export class TodoService {
+ 
   constructor(
     private http: HttpClient,
   ) {};
+
 
   todoListUpdated = new EventEmitter<Todo[]>();
   protected todoList: Todo[] = [
@@ -42,6 +45,11 @@ export class TodoService {
     const data = await fetch(this.url);
     return await data.json() ?? [];
   }
+
+  httpGetAllTodos(): Observable<Todo[]> {
+    return this.http.get<Todo[]>(this.url);
+  }
+  
 
   async getTodoById(id: number): Promise<Todo | undefined> {
     const data = await fetch(`${this.url}/${id}`);
