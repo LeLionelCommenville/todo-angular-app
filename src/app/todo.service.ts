@@ -10,10 +10,17 @@ import { Observable } from 'rxjs';
 
 export class TodoService {
  
+  
   constructor(
     private http: HttpClient,
   ) {};
 
+  
+  protected httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type':  'application/json',
+    })
+  };
 
   todoListUpdated = new EventEmitter<Todo[]>();
   protected todoList: Todo[] = [
@@ -69,7 +76,20 @@ export class TodoService {
       completion: 0,
       done: false
     }
-    this.todoList.push(newTodo)
+    this.todoList.push(newTodo);
+    this.todoListUpdated.emit(this.todoList);
+  }
+
+
+  HttpAddTodo(title: string, content: string): Observable<Todo> {
+    let newTodo : Todo = {
+      id: TodoService.length - 1,
+      title: title,
+      content : content,
+      completion: 0,
+      done: false
+    }
+    return this.http.post<Todo>(this.url, newTodo, this.httpOptions);
   }
 
   editTodo(id: number, title: string, content: string, completion: number, done: boolean) {
