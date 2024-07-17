@@ -46,20 +46,25 @@ export class TodoService {
       done: false
     },
   ]
-  url = 'http://localhost:3000/todos';
+  todosUrl = 'http://localhost:3000/todos';
 
   async getAllTodos(): Promise<Todo[]> {
-    const data = await fetch(this.url);
+    const data = await fetch(this.todosUrl);
     return await data.json() ?? [];
   }
 
   httpGetAllTodos(): Observable<Todo[]> {
-    return this.http.get<Todo[]>(this.url);
+    return this.http.get<Todo[]>(this.todosUrl);
+  }
+
+  httpDeleteTodo(id: number): Observable<unknown> {
+    const url = `${this.todosUrl}/${id}`;
+    return this.http.delete(url, this.httpOptions);
   }
   
 
   async getTodoById(id: number): Promise<Todo | undefined> {
-    const data = await fetch(`${this.url}/${id}`);
+    const data = await fetch(`${this.todosUrl}/${id}`);
     return await data.json() ?? {};
   }
 
@@ -89,7 +94,7 @@ export class TodoService {
       completion: 0,
       done: false
     }
-    return this.http.post<Todo>(this.url, newTodo, this.httpOptions);
+    return this.http.post<Todo>(this.todosUrl, newTodo, this.httpOptions);
   }
 
   editTodo(id: number, title: string, content: string, completion: number, done: boolean) {
