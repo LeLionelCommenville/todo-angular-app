@@ -107,6 +107,8 @@ export class TodoService {
     }
     const index = this.todoList.findIndex((todo) => todo.id === id);
     this.todoList[index] = editedTodo;
+    this.todoListUpdated.emit(this.todoList);
+
   }
 
 }
